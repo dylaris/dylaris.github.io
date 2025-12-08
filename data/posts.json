@@ -1,0 +1,29 @@
+[
+    {
+        "id": "first-post",
+        "title": "Getting Started with Alpine.js",
+        "date": "2024-01-15",
+        "summary": "A beginner's guide to building interactive web applications with Alpine.js.",
+        "excerpt": "Learn how to create reactive components without complex build tools...",
+        "tags": ["JavaScript", "Frontend", "Alpine.js"],
+        "filename": "first-post.md"
+    },
+    {
+        "id": "second-post",
+        "title": "The Beauty of Minimalism in Web Design",
+        "date": "2024-01-10",
+        "summary": "Exploring why less is more when it comes to modern web design.",
+        "excerpt": "How simplicity can improve user experience and performance...",
+        "tags": ["Design", "Web", "Minimalism"],
+        "filename": "second-post.md"
+    },
+    {
+        "id": "third-post",
+        "title": "Understanding Git Internals",
+        "date": "2024-01-05",
+        "summary": "A deep dive into how Git works under the hood.",
+        "excerpt": "From blobs and trees to commits and refs, understanding Git's data model...",
+        "tags": ["Git", "Version Control", "DevOps"],
+        "filename": "third-post.md"
+    }
+]
