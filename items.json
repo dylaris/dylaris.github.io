@@ -1,0 +1,74 @@
+[
+    {
+        "title": "Learn JavaScript",
+        "brief": "Master JavaScript fundamentals and advanced concepts",
+        "state": "IN_PROGRESS",
+        "time": {
+            "create": "2024-11-1",
+            "update": "2024-11-2"
+        },
+        "refer": [
+            {
+                "name": "refer1",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+            },
+            {
+                "name": "refer2",
+                "url": "https://javascript.info/"
+            }
+        ]
+    },
+    {
+        "title": "Build a Todo App",
+        "brief": "Create a simple todo application with vanilla JavaScript",
+        "state": "DONE",
+        "time": {
+            "create": "2024-11-1",
+            "update": "2024-11-2"
+        },
+        "refer": [
+            {
+                "name": "refer1",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+            },
+            {
+                "name": "refer2",
+                "url": "https://javascript.info/"
+            }
+        ]
+    },
+    {
+        "title": "Learn CSS Grid",
+        "brief": "Study CSS Grid layout for modern web design",
+        "state": "TODO",
+        "time": {
+            "create": "2024-11-1",
+            "update": "2024-11-2"
+        },
+        "refer": [
+            {
+                "name": "refer1",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+            }
+        ]
+    },
+    {
+        "title": "Build a TELNET App",
+        "brief": "Create a simple todo application with vanilla JavaScript",
+        "state": "DONE",
+        "time": {
+            "create": "2024-11-1",
+            "update": "2024-11-2"
+        },
+        "refer": [
+            {
+                "name": "refer1",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+            },
+            {
+                "name": "refer2",
+                "url": "https://javascript.info/"
+            }
+        ]
+    }
+]
