@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Dylaris's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <a href="posts/第一篇博客.html">第一篇博客</a>
+    <div class="page">
+        <!-- tab links -->
+        <div class="tab">
+            <button class="tab-link" onclick="openTab(event, 'home')" id="defaultTab">主页</button>
+            <button class="tab-link" onclick="openTab(event, 'blog')">博客</button>
+            <button class="tab-link" onclick="openTab(event, 'album')">相册</button>
+        </div>
+
+        <!-- tab contents -->
+        <div id="home" class="tab-content">
+            <h3>Welcome</h3>
+            <p>我是dylaris，这是我的个人网站，欢迎到来。</p>
+        </div>
+
+        <div id="blog" class="tab-content">
+            <a href="posts/第一篇博客.html">第一篇博客</a>
+        </div>
+
+        <div id="album" class="tab-content">
+            <img src="images/arena_allocator.png" alt="arena_allocator"></img>
+            <img src="images/memory_fragmentation.png" alt="memory_fragmentation"></img>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("defaultTab").click();
+    </script>
 </body>
 </html>
