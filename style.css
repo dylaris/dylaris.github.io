@@ -105,6 +105,21 @@ body, html {
     color: var(--text-page-primary);
 }
 
+/* hide scroll bar - begin */
+.page {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.page::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+.page::-webkit-scrollbar-track,
+.page::-webkit-scrollbar-thumb {
+      background: transparent;
+}
+/* hide scroll bar - end */
+
 .page img {
     width: 60%;
     height: auto;
