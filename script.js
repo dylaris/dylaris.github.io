@@ -1,17 +1,19 @@
-function openTab(event, tabName) {
+function openPage(pageName, element) {
     // hide all tab content
-    let tabContent = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = "none";
+    let tabcontent = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
     }
 
-    // remove class 'active'
-    let tabLink = document.getElementsByClassName("tab-link");
-    for (let i = 0; i < tabLink.length; i++) {
-        tabLink[i].className = tabLink[i].className.replace(" active", "");
+    let tablink = document.getElementsByClassName("tab-link");
+    for (let i = 0; i < tablink.length; i++) {
+        tablink[i].style.backgroundColor = "";
     }
 
-    // display current tab and add class 'active'
-    document.getElementById(tabName).style.display = "block";
-    event.currentTarget.className += " active";
+    // display current page
+    document.getElementById(pageName).style.display = "block";
+    const root = document.documentElement;
+    const color = getComputedStyle(root).getPropertyValue(`--bg-body-${pageName}`).trim();
+    element.style.backgroundColor = color;
+    document.body.style.backgroundColor = color;
 }
