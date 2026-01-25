@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Dylaris's Website</title>
@@ -8,6 +8,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // add time stamp to avoid cache
             const isDev = true;
             const version = isDev ? new Date().getTime() : "20260124";
             document.getElementById('css-link').href = `style.css?v=${version}`;
@@ -15,6 +16,14 @@
             jsScript.src = `script.js?v=${version}`;
             jsScript.onload = function () {
                 document.getElementById("defaultOpen").click();
+                // bind blog link
+                const blogLinks = document.querySelectorAll("#blog-list a[data-blog-id]");
+                blogLinks.forEach(link => {
+                    link.addEventListener("click", function () {
+                        const blogId = this.getAttribute("data-blog-id");
+                        loadBlogContent(blogId);
+                    });
+                });
             }
         });
     </script>
@@ -22,25 +31,26 @@
 <body>
     <div class="menu">
         <!-- tab links -->
-        <button class="tab-link" onclick="openPage('home', this, 'red')" id="defaultOpen">主页</button>
-        <button class="tab-link" onclick="openPage('blog', this, 'green')">博客</button>
-        <button class="tab-link" onclick="openPage('album', this, 'yellow')">相册</button>
+        <button class="tab-link" onclick="openPage('home', this, 'red')" id="defaultOpen">Home</button>
+        <button class="tab-link" onclick="openPage('blog', this, 'green')">Blog</button>
+        <button class="tab-link" onclick="openPage('album', this, 'yellow')">Album</button>
     </div>
 
     <div class="page">
         <!-- tab contents -->
         <div id="home" class="tab-content">
             <h3>Welcome</h3>
-            <p>我是dylaris，这是我的个人网站，欢迎到来。</p>
+            <p>Hello, I am dylaris. This is my person website.</p>
         </div>
 
         <div id="blog" class="tab-content">
-            <ul>
-                <li><a href="posts/第一篇博客.html">第一篇博客</a></li>
-                <li><a href="posts/第一篇博客.html">第一篇博客</a></li>
-                <li><a href="posts/第一篇博客.html">第一篇博客</a></li>
-                <li><a href="posts/第一篇博客.html">第一篇博客</a></li>
-            </ul>
+            <div id="blog-list">
+                <ul>
+                    <li><a href="javascript:;" data-blog-id=0>template</a></li>
+                    <li><a href="javascript:;" data-blog-id=1>The "One-and-Done" Memory Allocator: A Primer on Arena Allocation</a></li>
+                </ul>
+            </div>
+            <div id="blog-detail" style="display: none; margin-top: 20px;"></div>
         </div>
 
         <div id="album" class="tab-content">

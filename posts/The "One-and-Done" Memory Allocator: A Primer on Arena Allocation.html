@@ -1,0 +1,68 @@
+<h1>The "One-and-Done" Memory Allocator: A Primer on Arena Allocation</h1>
+
+<h2>What Is a Memory Allocator</h2>
+
+<p>Just as the name suggests-it *allocates memory*. But "a memory allocator allocates memory" isn't the interesting part. The real question is <strong>how</strong> it allocates memory-in other words, how it *manages memory*. This can be broken down into several questions: What is the managed unit—a byte, a block? How are those units organized—in a buffer, a linked list? What allocation algorithm is used? And so on. You need to think from multiple angles when designing a memory allocator.</p>
+
+<h2>The Generic Memory Allocator in C</h2>
+
+<p>Before getting into the main topic, let's briefly discuss the <strong>generic memory allocator</strong> in C—an old friend we all know.</p>
+
+<p>In C, we interact with it regularly through <code>malloc</code> and <code>free</code>. A typical code snippet looks like this:</p>
+
+<pre>
+<code>
+void *p = malloc(1024); // allocate 1KB of memory
+// ... do something ...
+free(p); // release the allocated memory
+</code>
+</pre>
+
+<p>I won’t go deep into its internal managed units or data structures here—it likely works with variable-sized buffers plus metadata, organized into structures like a <strong>free list</strong> and an <strong>in-use list</strong>. Instead, let’s touch on a few well-known pain points.</p>
+
+<p>One classic headache is <strong>free-after-use</strong>: you must explicitly free every dynamically allocated (usually heap) memory block when you're done with it. Forget to free, and you risk the <strong>unforgiving problem of memory leaks</strong> (though, admittedly, memory is relatively cheap in 2025).</p>
+
+<p>Another common mistake is <strong>double-free</strong>: calling <code>free()</code> on the same pointer twice can crash your program.</p>
+
+<h2>The Arena Allocator</h2>
+
+<p>Finally, here comes the main event. Let's take a quick look at how an arena allocator works.</p>
+
+<img src="./images/arena_allocator.png" alt="arena allocator">
+
+<p>The diagram shows three blocks. These are the <strong>managed units</strong> in an arena allocator, often called *regions* or *blocks*. Each is essentially a byte buffer with some metadata (like <code>used_size</code> and <code>alloc_size</code>). Notice the arrows connecting them—yes, they’re linked together in a <strong>linked list</strong>, which is how the arena tracks its blocks.</p>
+
+<p>So far, we’ve identified two key components: <strong>regions/blocks</strong> and a <strong>linked list</strong>.</p>
+
+<p>Now, the workflow:</p>
+
+<ul>
+    <li>When you request memory, the allocator walks the linked list to find a block with enough free space. <strong>If one exists, it allocates from that block and returns. Otherwise, it creates a new block (often twice the requested size), appends it to the list, and allocates from there.</strong></li>
+    <li>When you free memory, you don't need to free each allocation individually. Instead, you <strong>free everything in one go</strong> at the end. In other words, all allocations within a block share the same lifetime, dramatically simplifying memory management.</li>
+</ul>
+
+<p>That’s the core idea—simple enough that you might overlook the features that make it <strong>faster</strong> than a generic allocator.</p>
+
+<h2>What Makes an Arena Allocator Fast</h2>
+
+<p>Compared to the generic allocator:</p>
+
+<ul>
+    <li>The arena <strong>pre-allocates large memory blocks</strong>, so most allocations just involve moving a pointer—essentially an arithmetic operation like <code>block.used_size += size</code>. This avoids the overhead of repeated system or heap-manager calls.</li>
+    <li>The arena is <strong>more compact and suffers less fragmentation</strong>. Within each block, memory is allocated linearly, leaving at most one internal gap per block. This improves <strong>cache locality</strong> and reduces wasted memory.</li>
+</ul>
+
+<img src="./images/memory_fragmentation.png" alt="memory fragmentation">
+
+<h2>Conclusion</h2>
+
+<p>The arena allocator is a simple memory allocator. It divides memory into regions (blocks), manages them via a linked list, and behaves like a <strong>linear allocator</strong> inside each block.</p>
+
+<p>Unlike C's generic allocator, the arena is built for <strong>high-volume</strong>, <strong>repeated allocation</strong>. it allocates fast and frees everything at once-no per-allocation <code>free()</code> overhead.</p>
+
+<h2>Reference</h2>
+
+<ul>
+    <li><a href="https://en.wikipedia.org/wiki/Region-based_memory_management">Region-based memory management - Wikipedia</a></li>
+</ul>
+
