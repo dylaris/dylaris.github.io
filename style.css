@@ -110,6 +110,9 @@ body {
     transition: 0.3s;
     width: 100%;
     color: var(--fg);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02),
+                inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .menu .tab-link:hover {
@@ -168,6 +171,10 @@ body {
 
 #blog-list a:hover {
     color: var(--fg-link-hover);
+}
+
+#blog-list li {
+    margin-bottom: 5px;
 }
 
 #blog-detail {
@@ -258,5 +265,13 @@ body {
 }
 #blog-detail .toc a {
     text-decoration: none;
+}
+
+#blog-date {
+    text-align: right;
+}
+
+#blog-date p {
+    color: var(--bg-tablink-active);
 }
 

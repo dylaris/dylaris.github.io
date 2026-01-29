@@ -64,7 +64,7 @@ function loadBlogContent(blogId) {
 
 function generateBlogToc() {
     const blogDetail = document.getElementById("blog-detail");
-    const titles = blogDetail.querySelectorAll("h1, h2, h3, h4");
+    const titles = blogDetail.querySelectorAll("h2, h3, h4");
 
     // create toc and insert it to beginning
     const tocContainer = document.createElement("div");
