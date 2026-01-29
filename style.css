@@ -5,57 +5,76 @@
     font-style: normal;
 }
 
-* {
-    box-sizing: border-box;
-    font-family: "IosevkaTerm", "IosevkaTerm", sans-serif;
+@font-face {
+    font-family: "Monospace-Krypton";
+    src: url("./assets/fonts/MonaspaceKryptonNF-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 :root {
-    --color-gold-1: #8a6d08;
-    --color-gold-2: #a87d18;
-    --color-gold-3: #bfa23b;
-    --color-gold-4: #c8a840;
-    --color-gold-5: #d0bc78;
+    --dark-accent: #e6b450;
+    --dark-bg: #0b0e14;
+    --dark-fg: #bfbdb6;
+    --dark-ui: #565b66;
 
-    --color-ink-1: #0e0e0c;
-    --color-ink-2: #0f0f0d;
-    --color-ink-3: #161614;
-    --color-ink-4: #181816;
-    --color-ink-5: #191917;
-    --color-ink-6: #1b1b18;
+    --dark-red-1: #f07178;
+    --dark-red-2: #d95757;
+    --dark-orange-1: #ffb454;
+    --dark-orange-2: #ff8f40;
+    --dark-orange-3: #f29668;
+    --dark-yellow-1: #e6b673;
+    --dark-blue-1: #39bae6;
+    --dark-blue-2: #59c2ff;
+    --dark-green-1: #aad94c;
+    --dark-green-2: #95e6cb;
+    --dark-gray-1: #707a8c;
+    --dark-purple-1: #d2a6ff;
 
-    --color-green-1: #5a9e5a;
+    --mirage-accent: #ffcc66;
+    --mirage-bg: #1f2430;
+    --mirage-fg: #cccac2;
+    --mirage-ui: #707a8c;
 
-    --color-text-1: #f2eee3;
-    --color-text-2: #ede9dd;
-    --color-text-3: #e5e1d6;
-    --color-text-4: #c9c5b9;
-    --color-text-5: #c2beb2;
-    --color-text-6: #bebaae;
+    --mirage-red-1: #f28779;
+    --mirage-red-2: #ff6666;
+    --mirage-orange-1: #ffd173;
+    --mirage-orange-2: #ffad66;
+    --mirage-orange-3: #f29e74;
+    --mirage-yellow-1: #ffdfb3;
+    --mirage-blue-1: #5ccfe6;
+    --mirage-blue-2: #73d0ff;
+    --mirage-green-1: #d5ff80;
+    --mirage-green-2: #95e6cb;
+    --mirage-gray-1: #6c7a8b;
+    --mirage-purple-1: #dfbfff;
 
-    --bg-body: var(--color-ink-2);
+    --bg-body: var(--dark-bg);
+    --border-board: var(--dark-orange-1);
+    --bg-board: var(--mirage-bg);
+    --fg: var(--mirage-fg);
+    --bg-tablink: var(--dark-bg);
+    --bg-tablink-hover: var(--dark-gray-1);
+    --bg-tablink-active: var(--dark-blue-1);
+    --fg-link-hover: var(--dark-purple-1);
+    --fg-blog-h1: var(--dark-red-1);
+    --fg-blog-h2: var(--dark-orange-1);
+    --fg-blog-hx: var(--dark-orange-2);
+    --fg-blog-seperator: var(--dark-green-2);
+    --fg-blog-code: black;
+    --bg-blog-code-1: var(--dark-green-2);
+    --bg-blog-code-2: var(--dark-bg);
+    --fg-blog-strong: white;
+    --bg-blog-button: var(--mirage-blue-1);
+}
 
-    --bg-menu: var(--color-ink-3);
-    --bg-menu-tablink: var(--color-ink-4);
-    --bg-menu-tablink-hover: var(--color-ink-6);
-    --bg-menu-tablink-active: var(--color-green-1);
-    --border-menu: var(--color-gold-3);
-    --text-menu-primary: var(--color-text-2);
-    --text-menu-secondary: var(--color-text-6);
+* {
+    box-sizing: border-box;
+    font-family: "Monospace-Krypton", sans-serif;
+}
 
-    --bg-page: var(--color-ink-3);
-    --border-page: var(--color-gold-3);
-    --text-page-primary: var(--color-text-1);
-    --text-page-secondary: var(--color-text-5);
-    --link-page-normal: var(--color-text-1);
-    --link-page-hover: var(--color-green-1);
-    --link-page-visited: var(--color-text-4);
-
-    --bg-album-img-container: var(--color-ink-1);
-    --border-album-img: var(--color-gold-1);
-
-    --bg-reserved: var(--color-ink-3);
-    --border-reserved: var(--color-gold-3);
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -77,28 +96,28 @@ body {
     flex-direction: column;
     gap: 10px;
     padding: 10px;
-    border: 1px solid var(--border-menu);
+    border: 1px solid var(--border-board);
     overflow: hidden;
-    background-color: var(--bg-menu);
+    background-color: var(--bg-board);
     text-align: center;
 }
 
 .menu .tab-link {
     padding: 15px 8px;
     border: none;
-    background-color: var(--bg-menu-tablink);
+    background-color: var(--bg-tablink);
     cursor: pointer;
     transition: 0.3s;
     width: 100%;
-    color: var(--text-menu-primary);
+    color: var(--fg);
 }
 
 .menu .tab-link:hover {
-    background-color: var(--bg-menu-tablink-hover);
+    background-color: var(--bg-tablink-hover);
 }
 
 .menu .tab-link.active {
-    background-color: var(--bg-menu-tablink-active);
+    background-color: var(--bg-tablink-active);
 }
 
 .reserved {
@@ -107,8 +126,8 @@ body {
     bottom: 2%;
     left: 77%;
     right: 2%;
-    border: 1px solid var(--border-reserved);
-    background-color: var(--bg-reserved);
+    border: 1px solid var(--border-board);
+    background-color: var(--bg-board);
 }
 
 .page {
@@ -118,12 +137,12 @@ body {
     left: 25%;
     right: 25%;
     overflow: auto;
-    border: 1px solid var(--border-page);
-    background-color: var(--bg-page);
-    color: var(--text-page-primary);
+    border: 1px solid var(--border-board);
+    background-color: var(--bg-board);
+    color: var(--fg);
 }
 
-/* hide scroll bar - begin */
+/* hide page scroll bar - begin */
 .page {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -134,170 +153,110 @@ body {
 }
 .page::-webkit-scrollbar-track,
 .page::-webkit-scrollbar-thumb {
-      background: transparent;
+    background: transparent;
 }
-/* hide scroll bar - end */
-
-.page img {
-    width: 60%;
-    height: auto;
-}
+/* hide page scroll bar - end */
 
 .page .tab-content {
-    padding: 6px 12px;
+    padding: 3px 12px;
+    padding-bottom: 20px;
+}
+
+#blog-list a {
+    color: var(--fg);
+}
+
+#blog-list a:hover {
+    color: var(--fg-link-hover);
+}
+
+#blog-detail {
+    width: 100%;
     height: 100%;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
-.page .tab-content a {
-    color: var(--link-page-normal);
-    text-decoration: none;
-    transition: color 0.3s;
+#blog-detail h1 {
+    color: var(--fg-blog-h1);
+}
+#blog-detail h2 {
+    color: var(--fg-blog-h2);
+}
+#blog-detail h3, #blog-detail h4 {
+    color: var(--fg-blog-hx);
+}
+#blog-detail h2, #blog-detail h3, #blog-detail h4 {
+    border-bottom: 1px dashed var(--fg-blog-seperator);
 }
 
-.page .tab-content a:visited {
-    color: var(--link-page-visited);
+#blog-detail p {
+    color: var(--fg);
 }
 
-.page .tab-content a:hover {
-    color: var(--link-page-hover);
+#blog-detail pre {
+    background-color: var(--bg-blog-code-2);
+    border-radius: 4px;
+    overflow-x: auto;
+    border-left: 3px solid var(--fg-blog-seperator);
+    padding: 4px 4px 4px 16px;
+}
+#blog-detail code {
+    color: var(--fg-blog-code);
+    background-color: var(--bg-blog-code-1);
+    border-radius: 2px;
+    padding: 4px 4px;
+}
+#blog-detail pre code {
+    background: transparent;
+    color: var(--fg);
+    line-height: 1.5;
+}
+
+#blog-detail strong {
+    color: var(--fg-blog-strong);
+}
+
+#blog-detail ul, #blog-detail ol {
+}
+
+#blog-detail li {
+}
+
+#blog-detail a {
+    color: var(--fg);
     text-decoration: underline;
 }
 
-/* below is generated by ai */
-
-/* 标题层级样式 */
-.tab-content h1 {
-    color: var(--color-text-1);
-    font-size: 2rem;
-    margin: 1.5rem 0 1rem;
-    border-bottom: 1px solid var(--color-gold-3);
-    padding-bottom: 0.5rem;
+#blog-detail a:hover {
+    color: var(--fg-link-hover);
 }
 
-.tab-content h2 {
-    color: var(--color-text-1);
-    font-size: 1.75rem;
-    margin: 1.25rem 0 0.8rem;
-}
-
-.tab-content h3 {
-    color: var(--color-text-2);
-    font-size: 1.5rem;
-    margin: 1rem 0 0.6rem;
-}
-
-.tab-content h4 {
-    color: var(--color-text-2);
-    font-size: 1.25rem;
-    margin: 0.8rem 0 0.5rem;
-}
-
-/* 普通文本与段落 */
-.tab-content p {
-    color: var(--color-text-3);
-    font-size: 1rem;
-    line-height: 1.8;
-    margin: 0.8rem 0;
-    text-align: justify;
-}
-
-/* 列表样式 */
-.tab-content ul, .tab-content ol {
-    color: var(--color-text-3);
-    line-height: 1.8;
-    margin: 0.5rem 0 0.5rem 2rem;
-    padding-left: 0.5rem;
-}
-
-.tab-content li {
-    margin: 0.4rem 0;
-}
-
-/* 行内代码 */
-.tab-content code {
-    background-color: var(--color-ink-1);
-    color: var(--color-green-1);
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-family: "IosevkaTerm", monospace;
-    font-size: 0.95rem;
-}
-
-/* 代码块 */
-.tab-content pre {
-    background-color: var(--color-ink-1);
-    border: 1px solid var(--color-gold-1);
-    border-radius: 4px;
-    padding: 1rem;
-    margin: 1rem 0;
-    overflow-x: auto;
-    color: var(--color-text-2);
-    font-family: "CodeNewRoman", monospace;
-    line-height: 1.6;
-}
-
-/* 引用块 */
-.tab-content blockquote {
-    border-left: 3px solid var(--color-gold-3);
-    padding: 0.8rem 1.2rem;
-    margin: 1rem 0;
-    background-color: var(--color-ink-4);
-    color: var(--color-text-4);
-    font-style: italic;
-}
-
-/* 表格样式 */
-.tab-content table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.2rem 0;
-    background-color: var(--color-ink-4);
-}
-
-.tab-content th, .tab-content td {
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--color-gold-3);
-    text-align: left;
-}
-
-.tab-content th {
-    background-color: var(--color-ink-1);
-    color: var(--color-text-1);
-    font-weight: bold;
-}
-
-.tab-content td {
-    color: var(--color-text-3);
-}
-
-/* 按钮样式（适配博客内按钮） */
-.tab-content button {
-    background-color: var(--bg-menu-tablink);
-    border: 1px solid var(--color-gold-3);
-    color: var(--text-menu-primary);
-    padding: 0.6rem 1.2rem;
-    margin: 0.4rem 0.2rem;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.tab-content button:hover {
-    background-color: var(--bg-menu-tablink-hover);
-    border-color: var(--color-green-1);
-}
-
-/* 图片样式优化 */
-.tab-content img {
+#blog-detail img {
+    max-width: 80%;
+    height: auto;
+    margin: 10px auto;
     display: block;
-    margin: 1.2rem auto;
-    border: 1px solid var(--border-album-img);
     border-radius: 4px;
-    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-/* 小尺寸图片（缩略图）适配 */
-.tab-content img[src*="random=2"] {
-    width: 200px;
-    height: 200px;
+#blog-detail button {
+    background-color: var(--bg-blog-button);
+    border: none;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
 }
+
+#blog-detail .toc {
+    background-color: var(--bg-body);
+    border-radius: 10px;
+    padding: 4px 4px;
+}
+#blog-detail .toc a {
+    text-decoration: none;
+}
+

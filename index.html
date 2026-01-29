@@ -10,12 +10,17 @@
         document.addEventListener('DOMContentLoaded', function() {
             // add time stamp to avoid cache
             const isDev = true;
-            const version = isDev ? new Date().getTime() : "20260124";
+            const version = isDev ? new Date().getTime() : "20260129";
             document.getElementById('css-link').href = `style.css?v=${version}`;
             const jsScript = document.getElementById('js-script');
             jsScript.src = `script.js?v=${version}`;
             jsScript.onload = function () {
+                // display default open page
                 document.getElementById("defaultOpen").click();
+
+                // init blog ids
+                initBlogIds();
+
                 // bind blog link
                 const blogLinks = document.querySelectorAll("#blog-list a[data-blog-id]");
                 blogLinks.forEach(link => {
@@ -31,9 +36,8 @@
 <body>
     <div class="menu">
         <!-- tab links -->
-        <button class="tab-link" onclick="openPage('home', this, 'red')" id="defaultOpen">Home</button>
-        <button class="tab-link" onclick="openPage('blog', this, 'green')">Blog</button>
-        <button class="tab-link" onclick="openPage('album', this, 'yellow')">Album</button>
+        <button class="tab-link" onclick="openPage('home', this)" id="defaultOpen">Home</button>
+        <button class="tab-link" onclick="openPage('blog', this)">Blog</button>
     </div>
 
     <div class="page">
@@ -45,21 +49,11 @@
 
         <div id="blog" class="tab-content">
             <div id="blog-list">
-                <ul>
-                    <li><a href="javascript:;" data-blog-id=0>template</a></li>
-                    <li><a href="javascript:;" data-blog-id=1>The "One-and-Done" Memory Allocator: A Primer on Arena Allocation</a></li>
+                <ul id="blog-ul">
+                    <li><a href="javascript:;">What Is Arena Allocator</a></li>
                 </ul>
             </div>
-            <div id="blog-detail" style="display: none; margin-top: 20px;"></div>
-        </div>
-
-        <div id="album" class="tab-content">
-            <img src="images/arena_allocator.png" alt="arena_allocator">
-            <img src="images/memory_fragmentation.png" alt="memory_fragmentation">
-            <img src="images/arena_allocator.png" alt="arena_allocator">
-            <img src="images/arena_allocator.png" alt="arena_allocator">
-            <img src="images/arena_allocator.png" alt="arena_allocator">
-            <img src="images/arena_allocator.png" alt="arena_allocator">
+            <div id="blog-detail" style="display: none;"></div>
         </div>
     </div>
 
