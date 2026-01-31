@@ -1,6 +1,6 @@
 <h1>What Is Arena Allocator</h1>
 
-<h2>What Is a Memory Allocator</h2>
+<h2>What Is a Memory Allocator?</h2>
 
 <p>Just as the name suggests---it *allocates memory*. But "a memory allocator allocates memory" isn't the interesting part. The real question is how it allocates memory---in other words, how it <strong>manages memory</strong>. This can be broken down into several questions: What is the managed unit---a byte, a block? How are those units organized---in a buffer, a linked list? What allocation algorithm is used? And so on. You need to think from multiple angles when designing a memory allocator.</p>
 
@@ -43,7 +43,7 @@ free(p); // release the allocated memory
 
 <p>That’s the core idea—simple enough that you might overlook the features that make it <strong>faster</strong> than a generic allocator.</p>
 
-<h2>What Makes an Arena Allocator Fast</h2>
+<h2>What Makes an Arena Allocator Fast?</h2>
 
 <p>Compared to the generic allocator:</p>
 
@@ -66,6 +66,4 @@ free(p); // release the allocated memory
     <li><a href="https://en.wikipedia.org/wiki/Region-based_memory_management">Region-based memory management - Wikipedia</a></li>
 </ul>
 
-<div id="blog-date">
-    <p>2025-12-20</p>
-</div>
+<div id="blog-date"><p>2025-12-20</p></div>

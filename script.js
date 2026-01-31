@@ -84,16 +84,13 @@ function generateBlogToc() {
         const id = `${i}-${tagName}`;
         title.id = id;
 
-        // click title and goto toc
+        // click title and goto header
         title.style.cursor = "pointer";
         title.addEventListener("click", () => {
-            const toc = document.getElementById("blog-toc");
-            if (toc) {
-                toc.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }
+            header.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
         });
 
         const tocLi = document.createElement("li");

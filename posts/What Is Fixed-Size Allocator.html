@@ -1,0 +1,42 @@
+<h1>What Is a Fixed-Size Allocator?</h1>
+
+<h2>What Does "Fixed-Size" Mean Exactly?</h2>
+
+<p>A fixed-size allocator hands out memory in <strong>uniform, fixed-size chunks</strong>. Let's take a simple example: suppose we have a fixed-size allocator where each chunk is 4 bytes. When you call <code>fixed_size_allocator_allocate()</code>, it'll just toss you a pointer to one of those 4-byte chunks.</p>
+
+<p>If you want to compare it to the generic memory allocator in C (think <code>malloc()</code> and <code>free()</code>), you can basically look at the C allocator as a fixed-size allocator that deals in 1-byte units.</p>
+
+<h2>Bitmap: Tracking Chunk Status</h2>
+
+<p>Let's say we have a big block of memory--—20 bytes, for example--—and a fixed-size allocator that uses 4-byte chunks. That big block can be split neatly into <strong>20 / 4 = 5 chunks</strong> (this collection of chunks is also called a <strong>memory pool</strong>). When you request memory from the pool, one of these chunks gets marked as "in use"—that makes sense. But the question is: <strong>how do we efficiently track which chunks are used and which are free?</strong></p>
+
+<p>One straightforward (but not super efficient) way is to add a tiny metadata header to each chunk. It might look something like this:</p>
+
+<pre>
+<code>
+struct Header {
+    bool used;
+};
+</code>
+</pre>
+
+<p>But let's be real--—this is a bit of a memory waste. We only need two states here: used or free. That's basically a binary choice, which can be represented with just <strong>1 single bit</strong> (0 for free, 1 for used, or vice versa).</p>
+
+<p>That's where a <strong>bitmap</strong> comes in. A bitmap is just a sequence of bits--—like <strong>0001100010010</strong>—--where each bit corresponds to one chunk in our memory pool. In theory, a bitmap can be any length, but for performance reasons (since computers work best with aligned data), it's usually sized to be a power of 2 (2, 4, 8, 16, etc. bytes).</p>
+
+<p>Going back to our earlier example with 5 chunks: we only need 5 bits to track all of them, which fits neatly into 1 byte (since 1 byte = 8 bits). When you allocate a chunk, you set the corresponding bit in the bitmap to 1; when you free the chunk, you reset that bit back to 0. Simple as that.</p>
+
+<img src="./images/fixed_size_allocator.png" alt="fixed-size allocator">
+
+<h2>When Should You Use a Fixed-Size Allocator?</h2>
+
+<p>If you find yourself <strong>frequently allocating and freeing objects of the exact same size</strong> (think small, short-lived objects in games or embedded systems, for example), a fixed-size allocator is a great choice—it's faster and less prone to memory fragmentation than the generic allocator.</p>
+
+<h2>Reference</h2>
+
+<ul>
+    <li><a href="https://en.wikipedia.org/wiki/Memory_pool">Memory pool - Wikipedia</a></li>
+</ul>
+
+<div id="blog-date"><p>2026-1-30</p></div>
+

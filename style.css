@@ -165,8 +165,13 @@ body {
     padding-bottom: 20px;
 }
 
+#blog-list ul {
+    color: var(--fg-blog-seperator);
+}
+
 #blog-list a {
     color: var(--fg);
+    text-decoration: none;
 }
 
 #blog-list a:hover {
@@ -175,6 +180,10 @@ body {
 
 #blog-list li {
     margin-bottom: 5px;
+}
+
+#blog-detail ul {
+    color: var(--fg-blog-seperator);
 }
 
 #blog-detail {
@@ -213,7 +222,7 @@ body {
     color: var(--fg-blog-code);
     background-color: var(--bg-blog-code-1);
     border-radius: 2px;
-    padding: 4px 4px;
+    padding: 2px 4px;
 }
 #blog-detail pre code {
     background: transparent;
@@ -229,6 +238,7 @@ body {
 }
 
 #blog-detail li {
+    margin-bottom: 5px;
 }
 
 #blog-detail a {
