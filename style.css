@@ -165,10 +165,6 @@ body {
     padding-bottom: 20px;
 }
 
-#blog-list ul {
-    color: var(--fg-blog-seperator);
-}
-
 #blog-list a {
     color: var(--fg);
     text-decoration: none;
@@ -180,10 +176,7 @@ body {
 
 #blog-list li {
     margin-bottom: 5px;
-}
-
-#blog-detail ul {
-    color: var(--fg-blog-seperator);
+    color: var(--fg);
 }
 
 #blog-detail {
@@ -232,9 +225,6 @@ body {
 
 #blog-detail strong {
     color: var(--fg-blog-strong);
-}
-
-#blog-detail ul, #blog-detail ol {
 }
 
 #blog-detail li {
