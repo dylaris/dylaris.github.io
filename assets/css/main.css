@@ -1,0 +1,94 @@
+@import 'theme.css';
+@import 'post-list.css';
+
+@font-face {
+  font-family: 'monoflow';
+  src: url('/assets/fonts/monoflow.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'simkai';
+  src: url('/assets/fonts/simkai.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'monoflow', 'simkai';
+  line-height: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--body-bg);
+}
+
+.container {
+  width: 70%;
+  height: 96vh;
+  margin: 2vh auto;
+  background-color: var(--container-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--header-link);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
+nav a:hover {
+  color: var(--header-link-hover);
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+  color: var(--body-text);
+}
+
+footer {
+  background-color: var(--footer-bg);
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  font-size: 0.8rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--footer-link);
+}
+
+footer a:hover {
+  color: var(--footer-link-hover);
+}
+
+::selection {
+    background-color: var(--selection-color);
+    color: var(--black1);
+}
+

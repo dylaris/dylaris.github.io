@@ -1,64 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script defer src="assets/js/main.js"></script>
     <title>Dylaris's Website</title>
-    <link rel="stylesheet" id="css-link">
-    <script id="js-script"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // add time stamp to avoid cache
-            const isDev = true;
-            const version = isDev ? new Date().getTime() : "20260129";
-            document.getElementById('css-link').href = `style.css?v=${version}`;
-            const jsScript = document.getElementById('js-script');
-            jsScript.src = `script.js?v=${version}`;
-            jsScript.onload = function () {
-                // display default open page
-                document.getElementById("defaultOpen").click();
-
-                // init blog ids
-                initBlogIds();
-
-                // bind blog link
-                const blogLinks = document.querySelectorAll("#blog-list a[data-blog-id]");
-                blogLinks.forEach(link => {
-                    link.addEventListener("click", function () {
-                        const blogId = this.getAttribute("data-blog-id");
-                        loadBlogContent(blogId);
-                    });
-                });
-            }
-        });
-    </script>
-</head>
-<body>
-    <div class="menu">
-        <!-- tab links -->
-        <button class="tab-link" onclick="openPage('home', this)" id="defaultOpen">Home</button>
-        <button class="tab-link" onclick="openPage('blog', this)">Blog</button>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="/" id="nav-home">Home</a></li>
+            <li><a href="/about" id="nav-about">About</a></li>
+            <li><a href="/posts" id="nav-posts">Posts</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main id="app">
+        <p>Loading...</p>
+      </main>
+      <footer>
+        <p>
+          <a href="https://github.com/dylaris" target="_blank" rel="noopener noreferrer">GitHub</a> |
+          <a href="mailto:your@email.com">Email</a>
+        </p>
+      </footer>
     </div>
-
-    <div class="page">
-        <!-- tab contents -->
-        <div id="home" class="tab-content">
-            <h3>Welcome</h3>
-            <p>Hello, I am dylaris. This is my person website.</p>
-        </div>
-
-        <div id="blog" class="tab-content">
-            <div id="blog-list">
-                <ul id="blog-ul">
-                    <li><a href="javascript:;">What Is Arena Allocator</a></li>
-                    <li><a href="javascript:;">What Is Fixed-Size Allocator</a></li>
-                </ul>
-            </div>
-            <div id="blog-detail" style="display: none;"></div>
-        </div>
-    </div>
-
-    <div class="reserved">
-    </div>
-</body>
+  </body>
 </html>

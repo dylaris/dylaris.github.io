@@ -1,0 +1,23 @@
+@import "theme.css";
+
+#post-list {
+  padding: 0;
+}
+
+#post-list li {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--seperator);
+}
+
+#post-list a {
+  text-decoration: none;
+  color: var(--link);
+  font-size: 0.9rem;
+}
+
+#post-list a:hover {
+  color: var(--link-hover);
+}
+

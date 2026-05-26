@@ -1,0 +1,33 @@
+@import "palette.css";
+
+:root {
+  --body-bg: var(--black2);
+  --body-text: var(--gray4);
+
+  --header-bg: var(--black1);
+  --header-text: var(--purple1);
+  --header-link: var(--gray2);
+  --header-link-hover: var(--purple1);
+
+  --footer-bg: var(--black1);
+  --footer-text: var(--gray1);
+  --footer-link: var(--gray2);
+  --footer-link-hover: var(--purple1);
+
+  --container-bg: var(--black3);
+  --container-border: var(--black4);
+
+  --primary: var(--purple1);
+  --primary-hover: var(--purple2);
+  --secondary: var(--orange2);
+  --secondary-hover: var(--orange1);
+  --accent: var(--green2);
+
+  --link: var(--gray3);
+  --link-hover: var(--green2);
+  --seperator: var(--black4);
+
+  --code-bg: var(--black4);
+  --code-text: var(--orange2);
+  --selection-color: var(--purple3);
+}
