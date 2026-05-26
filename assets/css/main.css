@@ -1,19 +1,6 @@
+@import 'font.css';
 @import 'theme.css';
 @import 'post-list.css';
-
-@font-face {
-  font-family: 'monoflow';
-  src: url('/assets/fonts/monoflow.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'simkai';
-  src: url('/assets/fonts/simkai.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 * {
   margin: 0;
@@ -22,7 +9,7 @@
 }
 
 body {
-  font-family: 'monoflow', 'simkai';
+  font-family: 'InconsolataLGC', 'simkai';
   line-height: 1;
   min-height: 100vh;
   display: flex;

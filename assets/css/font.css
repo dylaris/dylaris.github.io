@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'InconsolataLGC';
+  src: url('/assets/fonts/InconsolataLGC.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Monoflow';
+  src: url('/assets/fonts/Monoflow.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'simkai';
+  src: url('/assets/fonts/simkai.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
