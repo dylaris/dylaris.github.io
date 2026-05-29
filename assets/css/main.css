@@ -1,7 +1,14 @@
-@import "font.css";
 @import "theme.css";
 @import "post-list.css";
 @import "post.css";
+
+@font-face {
+  font-family: 'InconsolataLGC';
+  src: url('/assets/fonts/InconsolataLGC.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
 
 * {
   margin: 0;
@@ -10,7 +17,7 @@
 }
 
 body {
-  font-family: 'InconsolataLGC', 'simkai';
+  font-family: 'InconsolataLGC';
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -59,7 +66,7 @@ body {
 }
 
 .container-main::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .container-main::-webkit-scrollbar-track {
@@ -67,12 +74,12 @@ body {
 }
 
 .container-main::-webkit-scrollbar-thumb {
-    background-color: var(--color-scrollbar-thumb);
-    border-radius: 3px;
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 3px;
 }
 
 .container-main::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-scrollbar-thumb-hover);
+  background-color: var(--color-scrollbar-thumb-hover);
 }
 
 .container-footer {
