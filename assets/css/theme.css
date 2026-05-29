@@ -1,33 +1,63 @@
-@import "palette.css";
-
 :root {
-  --body-bg: var(--black2);
-  --body-text: var(--gray4);
+  /* ============================================
+   * Palette
+   * ============================================ */
+  --white1: #E4F0FB;
+  --white2: #FFFFFF;
+  --black1: #303340;
+  --black2: #1B1E28;
+  --black3: #171922;
+  --yellow1: #FFFAC2;
+  --green1: #5DE4C7;
+  --green2: #5FB3A1;
+  --green3: #42675A;
+  --blue1: #89DDFF;
+  --blue2: #ADD7FF;
+  --blue3: #91B4D5;
+  --blue4: #7390AA;
+  --blue5: #506477;
+  --purple1: #A6ACCD;
+  --purple2: #767C9D;
+  --pink1: #FAE4FC;
+  --pink2: #FCC5E9;
+  --pink3: #D0679D;
 
-  --header-bg: var(--black1);
-  --header-text: var(--purple1);
-  --header-link: var(--gray2);
-  --header-link-hover: var(--purple1);
+  /* ============================================
+   * Global Basic Style
+   * ============================================ */
+  --color-body-bg: var(--blue5);
+  --color-selection-bg: var(--yellow1);
+  --color-text-primary: var(--white1);
+  --color-text-secondary: var(--white2);
+  --color-text-inverse: var(--black3);
+  --color-scrollbar-track: transparent;
+  --color-scrollbar-thumb: var(--black2);
+  --color-scrollbar-thumb-hover: var(--pink3);
 
-  --footer-bg: var(--black1);
-  --footer-text: var(--gray1);
-  --footer-link: var(--gray2);
-  --footer-link-hover: var(--purple1);
+  /* ============================================
+   * Layout Component
+   * ============================================ */
+  --color-header-bg: var(--black2);
+  --color-footer-bg: var(--black2);
+  --color-container-bg: var(--black1);
+  --color-container-border: var(--white1);
+  --color-seperator: var(--green2);
+  --color-info-box-bg: var(--purple2);
 
-  --container-bg: var(--black3);
-  --container-border: var(--black4);
+  /* ============================================
+   * Interactive Component
+   * ============================================ */
+  --color-link: var(--blue2);
+  --color-link-hover: var(--green1);
+  --color-primary: var(--pink1);
+  --color-primary-hover: var(--pink2);
+  --color-secondary: var(--blue1);
+  --color-secondary-hover: var(--blue2);
+  --color-accent: var(--pink3);
 
-  --primary: var(--purple1);
-  --primary-hover: var(--purple2);
-  --secondary: var(--orange2);
-  --secondary-hover: var(--orange1);
-  --accent: var(--green2);
-
-  --link: var(--gray3);
-  --link-hover: var(--green2);
-  --seperator: var(--black4);
-
-  --code-bg: var(--black4);
-  --code-text: var(--orange2);
-  --selection-color: var(--purple3);
+  /* ============================================
+   * Post Component
+   * ============================================ */
+  --color-tag-bg: var(--blue1);
+  --color-code-bg: var(--black3);
 }

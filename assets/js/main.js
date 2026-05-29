@@ -1,5 +1,5 @@
 /* global */
-const app = document.getElementById('app');
+const app = document.querySelector('.container-main');
 
 /* init */
 
@@ -85,7 +85,6 @@ function router() {
     loadPage(path);
   }
 }
-
 
 document.getElementById('nav-home').addEventListener('click', (e) => {
   e.preventDefault();

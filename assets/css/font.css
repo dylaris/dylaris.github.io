@@ -6,6 +6,13 @@
 }
 
 @font-face {
+  font-family: 'BlexMono';
+  src: url('/assets/fonts/BlexMono.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Monoflow';
   src: url('/assets/fonts/Monoflow.ttf') format('truetype');
   font-weight: normal;

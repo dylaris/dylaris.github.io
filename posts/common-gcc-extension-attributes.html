@@ -1,7 +1,152 @@
-<h1>Common GCC Extension Attributes</h1>
+<article class="blog-post">
+  <header class="post-header">
+    <h1>WebSocket vs HTTP: Choosing the Right Protocol for Your Real-Time Debugger</h1>
+    <div class="post-meta">
+      <span class="author">Alex Chen</span>
+      <span class="date">May 29, 2026</span>
+      <span class="category">Software Development</span>
+    </div>
+  </header>
 
-<p id="post-date">2026-3-26</p>
+  <div class="post-content">
+    <p>When building a web-based debugger for an emulator or any real-time system, one of the first architectural decisions you'll face is: <strong>should I use HTTP or WebSocket?</strong> This choice fundamentally impacts how your debugger feels, performs, and scales.</p>
 
-<!-- post metadata -->
-<!-- title: Common GCC Extension Attributes -->
-<!-- date: 2026-3-26 -->
+    <p>After implementing several debugging interfaces for embedded systems and emulators, I've learned that the answer isn't always obvious. Here's what you need to know.</p>
+
+    <h2>The Core Difference</h2>
+
+    <p>HTTP follows a <strong>request-response pattern</strong> — the client asks, the server answers, and the connection closes. WebSocket maintains a <strong>persistent bidirectional channel</strong> where either side can send data at any time.</p>
+
+    <pre><code class="language-javascript">// HTTP: Client initiates everything
+fetch('/api/status')
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+// WebSocket: Server can push spontaneously
+const ws = new WebSocket('ws://localhost:8080/debug');
+ws.onmessage = (event) => {
+  console.log('Server pushed:', event.data);
+};</code></pre>
+
+    <h2>When HTTP Makes Sense</h2>
+
+    <p>HTTP isn't obsolete. It excels in specific scenarios:</p>
+
+    <ul>
+      <li><strong>Historical data requests</strong> — Loading past logs or snapshots</li>
+      <li><strong>Large file transfers</strong> — Downloading memory dumps or screenshots</li>
+      <li><strong>Authentication and setup</strong> — One-time configuration endpoints</li>
+      <li><strong>Simple monitoring</strong> — When 5-10 second refresh intervals are acceptable</li>
+    </ul>
+
+    <h2>When WebSocket Is Non-Negotiable</h2>
+
+    <p>For a debugging tool, WebSocket becomes essential when:</p>
+
+    <ul>
+      <li>You need <strong>live performance charts</strong> (60 FPS metrics, real-time CPU usage)</li>
+      <li>The debugger must <strong>pause execution mid-frame</strong> and inspect state</li>
+      <li>You're implementing <strong>breakpoints and step-through debugging</strong></li>
+      <li>Logs stream continuously without browser refresh</li>
+    </ul>
+
+    <div class="info-box">
+      <strong>💡 Pro tip:</strong> The best debuggers use a hybrid approach — WebSocket for real-time interaction, HTTP for everything else.
+    </div>
+
+    <h2>Hands-On: Minimal WebSocket Server in C</h2>
+
+    <p>Using <code>libwebsockets</code>, you can add WebSocket support to your emulator in about 50 lines:</p>
+
+    <pre><code class="language-c">#include &lt;libwebsockets.h&gt;
+
+static int callback_debug(struct lws *wsi, enum lws_callback_reasons reason,
+              void *user, void *in, size_t len) {
+  switch (reason) {
+  case LWS_CALLBACK_ESTABLISHED:
+    printf("Debugger connected\n");
+    break;
+  case LWS_CALLBACK_RECEIVE:
+    // Handle command from browser
+    handle_debug_command(in, len);
+    // Send response
+    lws_write(wsi, in, len, LWS_WRITE_TEXT);
+    break;
+  case LWS_CALLBACK_CLOSED:
+    printf("Debugger disconnected\n");
+    break;
+  default:
+    break;
+  }
+  return 0;
+}</code></pre>
+
+    <h2>The Ugly Truth About Polling</h2>
+
+    <p>Some developers try to avoid WebSocket by using <strong>HTTP polling</strong>. Here's why that fails for debugging:</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr><th>Approach</th><th>Latency</th><th>Server Load</th><th>Real-time Feel</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Short polling (every 1s)</td><td>500ms-1s</td><td>High</td><td>❌ Choppy</td></tr>
+        <tr><td>Long polling</td><td>200-500ms</td><td>Medium</td><td>⚠️ Acceptable</td></tr>
+        <tr><td>WebSocket</td><td>&lt;10ms</td><td>Low</td><td>✅ Smooth</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Common Pitfalls to Avoid</h2>
+
+    <h3>1. Forgetting the WebSocket Handshake</h3>
+    <p>The connection starts as HTTP, then <strong>upgrades</strong>. Your server must properly handle the <code>Upgrade: websocket</code> header and compute the <code>Sec-WebSocket-Accept</code> key correctly.</p>
+
+    <h3>2. Ignoring Frame Boundaries</h3>
+    <p>Unlike raw TCP, WebSocket preserves message boundaries. Don't assume you can just concatenate buffers — you must parse the frame format.</p>
+
+    <h3>3. Skipping Ping/Pong Handling</h3>
+    <p>Always respond to Ping frames with Pong. Otherwise, intermediate proxies may close your connection after 30-60 seconds of inactivity.</p>
+
+    <h2>Real-World Architecture Example</h2>
+
+    <p>Here's how a production emulator debugger might be structured:</p>
+
+    <pre><code>┌─────────────┐   WebSocket    ┌──────────────────┐
+│   Browser   │◄─────────────────►│   Emulator Core   │
+│  Debugger   │   (实时命令/数据)  │   (C/C++)     │
+└─────────────┘          └────────┬─────────┘
+     │                   │
+     │  HTTP (历史日志/快照)         │
+     └─────────────────────────────────────┘</code></pre>
+
+    <h2>Decision Matrix</h2>
+
+    <p>Still unsure? Use this quick checklist:</p>
+
+    <ul>
+      <li>✅ <strong>Use WebSocket if:</strong> Bidirectional communication, low latency (&lt;50ms), server push, or streaming data</li>
+      <li>✅ <strong>Use HTTP if:</strong> Simple CRUD operations, cacheable responses, large file downloads, or RESTful API design</li>
+      <li>⚠️ <strong>Consider both if:</strong> You have mixed workloads — real-time commands + occasional large data transfers</li>
+    </ul>
+
+    <h2>Final Recommendation</h2>
+
+    <p>For an emulator debugger specifically: <strong>start with WebSocket for the core debugging channel</strong>. Add HTTP endpoints for auxiliary features like downloading memory snapshots or loading command histories.</p>
+
+    <p>Don't try to force HTTP to do what it wasn't designed for. The few hours you spend integrating a WebSocket library like <code>libwebsockets</code> or <code>IXWebSocket</code> will pay back十倍 in responsiveness and cleaner code.</p>
+
+    <div class="info-box">
+      <strong>📌 Key Takeaway:</strong> HTTP is for documents. WebSocket is for conversations. Debugging is a conversation with your running program.
+    </div>
+  </div>
+
+  <footer class="post-footer">
+    <div class="tags">
+      <span>#WebSocket</span>
+      <span>#HTTP</span>
+      <span>#Debugging</span>
+      <span>#RealTime</span>
+      <span>#CProgramming</span>
+    </div>
+  </footer>
+</article>
