@@ -9,7 +9,7 @@ function initPage(page) {
       fetch('/posts/index.json')
         .then(res => res.json())
         .then(posts => {
-          const list = document.getElementById('post-list');
+          const list = document.getElementById('posts');
           if (!list) return;
           list.innerHTML = '';
           posts.forEach(post => {

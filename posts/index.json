@@ -1,9 +1,16 @@
 [
   {
-    "file": "common-gcc-extension-attributes.html",
+    "file": "websocket.html",
     "title": "WebSocket vs HTTP: Choosing the Right Protocol for Your Real-Time Debugger",
     "date": "May 29, 2026",
     "author": "Alex Chen",
+    "category": "Software Development"
+  },
+  {
+    "file": "common-gcc-extension-attributes.html",
+    "title": "常用GCC扩展属性",
+    "date": "26 Mar, 2026",
+    "author": "dylaris",
     "category": "Software Development"
   }
 ]

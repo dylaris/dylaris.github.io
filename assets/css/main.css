@@ -1,10 +1,20 @@
 @import "theme.css";
-@import "post-list.css";
+@import "home.css";
+@import "posts.css";
 @import "post.css";
 
 @font-face {
   font-family: 'InconsolataLGC';
   src: url('/assets/fonts/InconsolataLGC.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+  size-adjust: 85%;
+}
+
+@font-face {
+  font-family: 'simkai';
+  src: url('/assets/fonts/simkai.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
@@ -17,13 +27,31 @@
 }
 
 body {
-  font-family: 'InconsolataLGC';
+  font-family: 'InconsolataLGC', 'simkai';
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--color-body-bg);
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-scrollbar-thumb-hover);
+}
+
 
 .container {
   width: 70%;
@@ -63,23 +91,6 @@ body {
   padding: 1rem;
   color: var(--color-text-primary);
   overflow-y: auto;
-}
-
-.container-main::-webkit-scrollbar {
-  width: 6px;
-}
-
-.container-main::-webkit-scrollbar-track {
-  background-color: var(--color-scrollbar-track);
-}
-
-.container-main::-webkit-scrollbar-thumb {
-  background-color: var(--color-scrollbar-thumb);
-  border-radius: 3px;
-}
-
-.container-main::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-scrollbar-thumb-hover);
 }
 
 .container-footer {

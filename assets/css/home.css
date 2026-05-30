@@ -1,0 +1,111 @@
+.home {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.top-section {
+  flex: 6;
+  display: flex;
+  gap: 1.5rem;
+  min-height: 0;
+}
+
+.bottom-section {
+  flex: 4;
+  display: flex;
+  min-height: 0;
+}
+
+.card {
+  flex: 1;
+  background: var(--color-card-bg);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 1.25rem 1.5rem 0.75rem 1.5rem;
+  border-left: 4px solid;
+  padding-left: calc(1.5rem - 4px);
+  flex-shrink: 0;
+  background: inherit;
+}
+
+.card-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.music-card .card-title {
+  border-left-color: #3b82f6;
+}
+.watching-card .card-title {
+  border-left-color: #10b981;
+}
+.doing-card .card-title {
+  border-left-color: #f59e0b;
+}
+
+.music-item,
+.watching-item,
+.doing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.music-item:last-child,
+.watching-item:last-child,
+.doing-item:last-child {
+  border-bottom: none;
+}
+
+.music-name,
+.watching-name,
+.doing-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.music-status,
+.watching-status,
+.doing-status {
+  font-size: 0.75rem;
+  color: #666;
+  background: rgba(0,0,0,0.06);
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .home {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .top-section {
+    flex-direction: column;
+    flex: none;
+  }
+
+  .bottom-section {
+    flex: none;
+  }
+
+  .card {
+    min-height: 300px;
+  }
+}

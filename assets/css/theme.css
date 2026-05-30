@@ -8,6 +8,7 @@
   --black2: #1B1E28;
   --black3: #171922;
   --yellow1: #FFFAC2;
+  --yellow2: #ebcb8b;
   --green1: #5DE4C7;
   --green2: #5FB3A1;
   --green3: #42675A;
@@ -21,6 +22,8 @@
   --pink1: #FAE4FC;
   --pink2: #FCC5E9;
   --pink3: #D0679D;
+  --red1: #bf616a;
+  --red2: #d08770;
 
   /* ============================================
    * Global Basic Style
@@ -43,6 +46,7 @@
   --color-container-border: var(--white1);
   --color-seperator: var(--green2);
   --color-info-box-bg: var(--purple2);
+  --color-card-bg: var(--black3);
 
   /* ============================================
    * Interactive Component
