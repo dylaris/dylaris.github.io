@@ -1,0 +1,62 @@
+.about {
+  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.about-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.about-section {
+  margin-bottom: 2rem;
+}
+
+.about-section h2 {
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.about-section p {
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.about .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about .tags span {
+  color: var(--color-text-inverse);
+  background: var(--white2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.about .contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.about .contact-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.about .contact-list a {
+  color: var(--white2);
+  text-decoration: none;
+}
+
+.about .contact-list a:hover {
+  background: var(--white2);
+  color: var(--black3);
+  text-decoration: underline;
+}

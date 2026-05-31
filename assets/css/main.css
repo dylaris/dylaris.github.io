@@ -1,5 +1,6 @@
 @import "theme.css";
 @import "home.css";
+@import "about.css";
 @import "posts.css";
 @import "post.css";
 
@@ -52,6 +53,10 @@ body {
   background-color: var(--color-scrollbar-thumb-hover);
 }
 
+::selection {
+    background-color: var(--color-selection-bg);
+    color: var(--color-text-inverse);
+}
 
 .container {
   width: 70%;
@@ -109,9 +114,3 @@ body {
 .container-footer a:hover {
   color: var(--color-link-hover);
 }
-
-::selection {
-    background-color: var(--color-selection-bg);
-    color: var(--color-text-inverse);
-}
-

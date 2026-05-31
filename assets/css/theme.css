@@ -3,7 +3,8 @@
    * Palette
    * ============================================ */
   --white1: #E4F0FB;
-  --white2: #FFFFFF;
+  --white2: #d8dee9;
+  --white3: #FFFFFF;
   --black1: #303340;
   --black2: #1B1E28;
   --black3: #171922;
@@ -31,7 +32,7 @@
   --color-body-bg: var(--blue5);
   --color-selection-bg: var(--yellow1);
   --color-text-primary: var(--white1);
-  --color-text-secondary: var(--white2);
+  --color-text-secondary: var(--white3);
   --color-text-inverse: var(--black3);
   --color-scrollbar-track: transparent;
   --color-scrollbar-thumb: var(--black2);
@@ -58,10 +59,4 @@
   --color-secondary: var(--blue1);
   --color-secondary-hover: var(--blue2);
   --color-accent: var(--pink3);
-
-  /* ============================================
-   * Post Component
-   * ============================================ */
-  --color-tag-bg: var(--blue1);
-  --color-code-bg: var(--black3);
 }
