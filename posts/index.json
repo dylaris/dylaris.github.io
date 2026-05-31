@@ -1,5 +1,12 @@
 [
   {
+    "file": "what-are-uri-url-and-urn.html",
+    "title": "什么是URI/URL/URN",
+    "date": "2026/5/31",
+    "author": "dylaris",
+    "category": "Concept Explainer"
+  },
+  {
     "file": "websocket.html",
     "title": "WebSocket vs HTTP: Choosing the Right Protocol for Your Real-Time Debugger",
     "date": "May 29, 2026",
@@ -7,9 +14,9 @@
     "category": "Software Development"
   },
   {
-    "file": "common-gcc-extension-attributes.html",
-    "title": "常用GCC扩展属性",
-    "date": "26 Mar, 2026",
+    "file": "how-to-implement-a-simple-http-server.html",
+    "title": "如何实现一个简单的http服务器",
+    "date": "2026/5/31",
     "author": "dylaris",
     "category": "Software Development"
   }
