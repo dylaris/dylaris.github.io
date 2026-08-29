@@ -1,0 +1,59 @@
+/* ============================================
+ * Palette (from Kanagawa)
+ * ============================================ */
+
+:root {
+  --sumi-ink1: #16161d;
+  --sumi-ink2: #1a1a22;
+  --sumi-ink3: #1f1f28;
+  --sumi-ink4: #2a2a37;
+  --sumi-ink5: #363646;
+
+  --fuji-white1: #dcd7ba;
+  --fuji-white2: #c8c093;
+  --fuji-white3: #a6a69c;
+
+  --ronin-yellow: #e6c384;
+  --ronin-orange: #ffa066;
+  --ronin-red: #c34043;
+  --ronin-pink: #d27e99;
+
+  --wave-blue1: #7fb4ca;
+  --wave-blue2: #658594;
+  --wave-aqua: #6a9589;
+  --wave-green: #98bb6c;
+  --wave-purple: #957fb8;
+
+  --spring-violet1: #938aa9;
+  --spring-violet2: #7a6b8a;
+  --carp-yellow: #ffd493;
+  --samurai-red: #e82424;
+
+  /* ===== Global Styles ===== */
+  --color-body-bg: var(--sumi-ink1);
+  --color-selection-bg: var(--ronin-yellow);
+  --color-selection-fg: var(--sumi-ink1);
+  --color-text-primary: var(--fuji-white1);
+  --color-text-secondary: var(--fuji-white2);
+  --color-text-muted: var(--fuji-white3);
+  --color-text-inverse: var(--sumi-ink1);
+  --color-scrollbar-track: transparent;
+  --color-scrollbar-thumb: var(--wave-green);
+
+  /* ===== Layout ===== */
+  --color-header-bg: var(--sumi-ink2);
+  --color-footer-bg: var(--sumi-ink2);
+  --color-container-bg: var(--sumi-ink3);
+  --color-container-border: var(--sumi-ink5);
+  --color-separator: var(--wave-aqua);
+  --color-card-bg: var(--sumi-ink2);
+
+  /* ===== Interactive ===== */
+  --color-link: var(--wave-blue1);
+  --color-link-hover: var(--ronin-yellow);
+  --color-primary: var(--ronin-yellow);
+  --color-primary-hover: var(--ronin-orange);
+  --color-secondary: var(--wave-blue1);
+  --color-secondary-hover: var(--wave-aqua);
+  --color-accent: var(--ronin-pink);
+}

@@ -1,0 +1,56 @@
+/* ============================================
+ * Common styles for all pages.
+ * ============================================ */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}
+
+body {
+  font-family: 'JetBrainsMono', 'simkai';
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-body-bg);
+  color: var(--color-text-primary);
+}
+
+::selection {
+  background-color: var(--color-selection-bg);
+  color: var(--color-text-inverse);
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('/assets/fonts/JetBrainsMono.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+  size-adjust: 85%;
+}
+
+@font-face {
+  font-family: 'simkai';
+  src: url('/assets/fonts/simkai.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+/* Links */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}

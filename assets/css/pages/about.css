@@ -1,3 +1,7 @@
+/* ============================================
+ * About Page
+ * ============================================ */
+
 .about {
   height: 100%;
   padding: 2rem;
@@ -34,7 +38,7 @@
 
 .about .tags span {
   color: var(--color-text-inverse);
-  background: var(--white2);
+  background: var(--fuji-white2);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -51,12 +55,12 @@
 }
 
 .about .contact-list a {
-  color: var(--white2);
+  color: var(--fuji-white2);
   text-decoration: none;
 }
 
 .about .contact-list a:hover {
-  background: var(--white2);
-  color: var(--black3);
+  background: var(--fuji-white2);
+  color: var(--sumi-ink3);
   text-decoration: underline;
 }

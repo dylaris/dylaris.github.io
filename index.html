@@ -1,31 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script defer src="assets/js/main.js"></script>
-    <title>Dylaris's Website</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script defer type="module" src="assets/js/main.js"></script>
+    <title>Dylaris's Blog</title>
   </head>
   <body>
     <div class="container">
       <header class="container-header">
         <nav>
           <ul>
-            <li><a href="/" id="nav-home">主页</a></li>
-            <li><a href="/about" id="nav-about">关于</a></li>
-            <li><a href="/posts" id="nav-posts">文章</a></li>
+            <li><a href="#" id="nav-home">Home</a></li>
+            <li><a href="#" id="nav-about">About</a></li>
+            <li><a href="#" id="nav-postlist">PostList</a></li>
           </ul>
         </nav>
       </header>
+
       <main class="container-main">
         <p>Loading...</p>
       </main>
+
       <footer class="container-footer">
         <p>
           <a href="https://github.com/dylaris" target="_blank" rel="noopener noreferrer">GitHub</a> |
-          <a href="mailto:your@email.com">邮箱</a>
+          <a href="mailto:3445818679@qq.com">Email</a>
         </p>
       </footer>
     </div>
+
+    <script type="module">
+      import { navigateToPage } from './assets/js/core/router.js';
+
+      document.getElementById('nav-home').addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('home');
+      });
+
+      document.getElementById('nav-about').addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('about');
+      });
+
+      document.getElementById('nav-postlist').addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('postlist');
+      });
+    </script>
   </body>
 </html>

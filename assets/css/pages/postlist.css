@@ -1,0 +1,24 @@
+/* ============================================
+ * Posts List Page
+ * ============================================ */
+
+#postlist {
+  padding: 0;
+}
+
+#postlist li {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+#postlist a {
+  text-decoration: underline;
+  color: var(--color-link);
+  font-size: 0.9rem;
+}
+
+#postlist a:hover {
+  background-color: var(--color-link-hover);
+  color: var(--color-text-inverse);
+}
