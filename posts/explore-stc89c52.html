@@ -1,0 +1,122 @@
+<article class="blog-post">
+  <header class="post-header">
+    <h1>探索stc89c52</h1>
+    <div class="post-meta">
+      <span class="author">dylaris</span>
+      <span class="date">2026/8/30</span>
+      <span class="category">MCU</span>
+    </div>
+  </header>
+
+  <div class="post-content">
+    <h2>环境配置(Linux)</h2>
+
+    <h3>安装编译器sdcc</h3>
+    <div class="info-box">
+      <p><strong>引用：</strong>SDCC (Small Device C Compiler) 是一个支持 C89/C99/C11/C23 标准的 C 编译器套件，主要支持 8051/Z80/STM8/6502/HC08 等架构</p>
+    </div>
+
+    <h4>1. 源码编译安装</h4>
+    <p>前往官网下载源码包<a href=https://sdcc.sourceforge.net/index.php#Download>download</a></p>
+    <p>解压后进行编译，因为sdcc是一个通用的编译器, 支持多个平台, 我只需要51系列的, 所以其他平台的直接禁用了, 配置过程缺少依赖库之类的按照错误信息下载就好了</p>
+    <pre><code>CC=clang CXX=clang++ \
+./configure \
+  --prefix=$HOME/opt/sdcc/ \
+  --disable-z80-port \
+  --disable-z180-port \
+  --disable-r2k-port \
+  --disable-r2ka-port \
+  --disable-r3ka-port \
+  --disable-sm83-port \
+  --disable-tlcs90-port \
+  --disable-ez80_z80-port \
+  --disable-z80n-port \
+  --disable-r800-port \
+  --disable-ds390-port \
+  --disable-ds400-port \
+  --disable-pic14-port \
+  --disable-pic16-port \
+  --disable-hc08-port \
+  --disable-s08-port \
+  --disable-stm8-port \
+  --disable-pdk13-port \
+  --disable-pdk14-port \
+  --disable-pdk15-port \
+  --disable-mos6502-port \
+  --disable-mos65c02-port \
+  --disable-f8-port
+
+make -j$(nproc)
+
+make install</code></pre>
+
+    <h4>2. 包管理器安装</h4>
+    <pre><code># 以ubuntu为例
+apt install sdcc</code></pre>
+
+    <h3>安装烧录工具stcgal</h3>
+    <div class="info-box">
+      <p><strong>引用：</strong>stcgal是用于[STC MCU Ltd]的命令行闪存编程工具，兼容8051微控制器。STC微控制器具有基于UART/USB的引导加载程序（BSL）。它采用系统内编程，即基于数据包的协议通过串行链路刷新代码存储器和IAP存储器。</p>
+    </div>
+    <p>需要安装python和pip，然后在用pip安装stcgal即可</p>
+    <pre><code>pip install stcgal</code></pre>
+
+    <h3>访问设备串口</h3>
+    <div class="info-box">
+      <p><strong>引用：</strong>CH341 是南京沁恒微电子推出的一款 USB 转串口/并口/I2C/SPI 等多功能接口芯片，通常是USB 转 TTL 串口（UART），用于开发板与电脑通信</p>
+    </div>
+
+    <h4>检查ch341驱动</h4>
+    <p>运行下面的命令，查看已加载模块列表是否有ch341驱动：</p>
+    <pre><code>lsmod | grep ch341</code></pre>
+    <p>如果没有输出，应该是缺少ch341驱动，需要手动加载（linux系统自带ch341驱动）：</p>
+    <pre><code>modprobe usbserial
+modprobe ch341</code></pre>
+    <p>将开发板的usb线接入电脑后，linux会将其抽象为一个串口文件，通常是/dev/ttyUSB0，具体可以通过查看系统日志<code>dmesg -w</code>来确定文件名，如下所示：</p>
+    <pre><code>[3169272.084366] ch341 3-9.2:1.0: ch341-uart converter detected
+[3169272.085505] usb 3-9.2: ch341-uart converter now attached to ttyUSB0</code></pre>
+
+    <h4>驱动冲突</h4>
+    <p>如果日志中出现<code>brltty, disconnected</code>等字段，那可能是brltty驱动与ch341驱动冲突了，卸载brltty驱动即可</p>
+    <pre><code>[3168735.065367] input: PC Speaker as /devices/platform/pcspkr/input/input43
+[3168735.579503] input: BRLTTY 6.6 Linux Screen Driver Keyboard as /devices/virtual/input/input44
+[3168735.676377] usb 3-9.2: usbfs: interface 0 claimed by ch341 while 'brltty' sets config #1
+[3168735.677058] ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
+[3168735.677079] ch341 3-9.2:1.0: device disconnected</code></pre>
+
+    <h4>增加串口文件读写权限</h4>
+    <p>找到串口文件后，还需要给文件增加读写权限（因为我们要烧录程序，即向这个串口文件写数据）</p>
+    <pre><code>chmod 666 /dev/ttyUSB0</code></pre>
+
+    <h3>验证</h3>
+    <p>以下测试程序会点亮4个LED灯：</p>
+    <pre><code>/* main.c */
+
+#include "8052.h"
+
+void main(void)
+{
+    P2 = 0xf0; // 点亮4个led灯
+    while (1)
+        ;
+}</code></pre>
+    <p>编译烧录命令：</p>
+    <pre><code>sdcc -o main.ihx main.c         # 编译 （C 代码 → 单片机固件）
+packihx main.ihx > main.hex     # 打包/格式化 （优化固件格式）
+stcgal -p /dev/ttyUSB0 main.hex # 烧录 （写入单片机）</code></pre>
+    <p>执行完命令后会出现这样的信息, 我们断电在上电, stcgal就能够烧录程序了</p>
+    <pre><code>Waiting for MCU, please cycle power:</code></pre>
+
+    <h3>引用</h3>
+    <p><a href="https://sdcc.sourceforge.net/">SDCC - Small Device C Compiler</a></p>
+    <p><a href="https://github.com/grigorig/stcgal">stcgal - Open Source STC MCU ISP flash tool</a></p>
+  </div>
+
+  <footer class="post-footer">
+    <div class="tags">
+      <span>#stc89c52</span>
+      <span>#MCU</span>
+      <span>#C</span>
+    </div>
+  </footer>
+</article>

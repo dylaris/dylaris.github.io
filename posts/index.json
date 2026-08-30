@@ -7,17 +7,10 @@
     "category": "Concept Explainer"
   },
   {
-    "file": "websocket.html",
-    "title": "WebSocket vs HTTP: Choosing the Right Protocol for Your Real-Time Debugger",
-    "date": "May 29, 2026",
-    "author": "Alex Chen",
-    "category": "Software Development"
-  },
-  {
-    "file": "how-to-implement-a-simple-http-server.html",
-    "title": "如何实现一个简单的http服务器",
-    "date": "2026/5/31",
+    "file": "explore-stc89c52.html",
+    "title": "探索stc89c52",
+    "date": "2026/8/30",
     "author": "dylaris",
-    "category": "Software Development"
+    "category": "MCU"
   }
 ]
