@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: 'JetBrainsMono', 'simkai';
+  font-family: 'lxgw-wenkai';
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -28,17 +28,8 @@ body {
 
 /* Fonts */
 @font-face {
-  font-family: 'JetBrainsMono';
-  src: url('/assets/fonts/JetBrainsMono.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: fallback;
-  size-adjust: 85%;
-}
-
-@font-face {
-  font-family: 'simkai';
-  src: url('/assets/fonts/simkai.ttf') format('truetype');
+  font-family: 'lxgw-wenkai';
+  src: url('/assets/fonts/lxgw-wenkai-mono.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: fallback;

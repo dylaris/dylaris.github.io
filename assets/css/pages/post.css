@@ -117,7 +117,7 @@
   border-radius: 4px;
   font-size: 0.875rem;
   color: var(--wave-green);
-  font-family: 'JetBrainsMono', 'simkai';
+  font-family: 'lxgw-wenkai';
 }
 
 .post-content pre {
@@ -126,7 +126,7 @@
   border-radius: 6px;
   overflow-x: auto;
   margin: 1rem 0;
-  font-family: 'JetBrainsMono', 'simkai';
+  font-family: 'lxgw-wenkai';
   position: relative;
   padding-top: 2.5rem;
 }
@@ -135,7 +135,7 @@
   background: none;
   padding: 0;
   color: var(--color-text-primary);
-  font-family: 'JetBrainsMono', 'simkai';
+  font-family: 'lxgw-wenkai';
 }
 
 .post-content ul,
