@@ -149,6 +149,12 @@
   margin-left: 1rem;
 }
 
+.post-content img {
+  max-width: 80%;
+  height: auto;
+  margin: 1rem 0;
+}
+
 .post-content .comparison-table {
   width: 100%;
   border-collapse: collapse;
