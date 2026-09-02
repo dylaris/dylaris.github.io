@@ -47,6 +47,7 @@
   --color-container-border: var(--sumi-ink5);
   --color-separator: var(--wave-aqua);
   --color-card-bg: var(--sumi-ink2);
+  --color-info-box: var(--sumi-ink2);
 
   /* ===== Interactive ===== */
   --color-link: var(--wave-blue1);
@@ -56,4 +57,56 @@
   --color-secondary: var(--wave-blue1);
   --color-secondary-hover: var(--wave-aqua);
   --color-accent: var(--ronin-pink);
+  --color-toggle-thumb-light: var(--ronin-yellow);
+  --color-toggle-thumb-dark: var(--wave-green);
+
+  /* ===== Post Meta ===== */
+  --color-meta-bg: var(--sumi-ink2);
+  --color-meta-border: var(--sumi-ink4);
+  --color-meta-label-author: var(--wave-blue1);
+  --color-meta-label-created: var(--wave-green);
+  --color-meta-label-updated: var(--ronin-yellow);
+  --color-meta-label-category: var(--wave-purple);
+  --color-meta-label-text: var(--sumi-ink1);
+  --color-meta-text: var(--fuji-white2);
+}
+
+/* ============================================
+ * Light Theme Overrides
+ * ============================================ */
+
+[data-theme="light"] {
+  /* ===== Light Palette ===== */
+  --sumi-ink1: #f5f5f0;
+  --sumi-ink2: #ecece4;
+  --sumi-ink3: #e3e3d8;
+  --sumi-ink4: #c8c8bc;
+  --sumi-ink5: #b0b0a4;
+
+  --fuji-white1: #2a2a2a;
+  --fuji-white2: #3a3a3a;
+  --fuji-white3: #6a6a6a;
+
+  /* ===== Global ===== */
+  --color-body-bg: var(--sumi-ink1);
+  --color-text-primary: var(--fuji-white1);
+  --color-text-secondary: var(--fuji-white2);
+  --color-text-muted: var(--fuji-white3);
+  --color-scrollbar-thumb: var(--ronin-yellow);
+
+  /* ===== Layout ===== */
+  --color-header-bg: var(--sumi-ink2);
+  --color-footer-bg: var(--sumi-ink2);
+  --color-container-bg: var(--sumi-ink3);
+  --color-container-border: var(--sumi-ink5);
+  --color-card-bg: var(--sumi-ink2);
+
+  /* ===== Interactive ===== */
+  --color-link: #4a6cf7;
+  --color-link-hover: var(--ronin-red);
+
+  /* ===== Post Meta ===== */
+  --color-meta-bg: var(--sumi-ink2);
+  --color-meta-border: var(--sumi-ink4);
+  --color-meta-text: var(--fuji-white2);
 }

@@ -10,13 +10,21 @@
   <body>
     <div class="container">
       <header class="container-header">
-        <nav>
-          <ul>
-            <li><a href="#" id="nav-home">Home</a></li>
-            <li><a href="#" id="nav-about">About</a></li>
-            <li><a href="#" id="nav-postlist">PostList</a></li>
-          </ul>
-        </nav>
+        <div class="header-wrapper">
+          <nav>
+            <ul>
+              <li><a href="#" id="nav-home">Home</a></li>
+              <li><a href="#" id="nav-about">About</a></li>
+              <li><a href="#" id="nav-postlist">PostList</a></li>
+            </ul>
+          </nav>
+          <!-- Theme toggle button -->
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <span class="toggle-track">
+              <span class="toggle-thumb"></span>
+            </span>
+          </button>
+        </div>
       </header>
 
       <main class="container-main">
@@ -47,6 +55,34 @@
       document.getElementById('nav-postlist').addEventListener('click', (e) => {
         e.preventDefault();
         navigateToPage('postlist');
+      });
+
+      // ===== Theme toggle logic =====
+      const toggleBtn = document.getElementById('themeToggle');
+      const thumb = toggleBtn.querySelector('.toggle-thumb');
+
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = storedTheme === 'dark' || (!storedTheme && prefersDark);
+
+      if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        thumb.classList.add('dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'light');
+          thumb.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          thumb.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
       });
     </script>
   </body>

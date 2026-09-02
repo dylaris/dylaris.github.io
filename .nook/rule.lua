@@ -11,19 +11,23 @@ return {
     brief = function(e)
       local prefix = ""
       if e.status == "todo" then
-        prefix = "\27[32m"  -- green
+        prefix = _G.color.fg_lwhite
       elseif e.status == "done" then
-        prefix = "\27[37m"  -- gray
+        prefix = _G.color.fg_lgreen
       elseif e.status == "doing" then
-        prefix = "\27[34m"  -- blue
+        prefix = _G.color.fg_yellow
       else
-        prefix = "\27[0m"
+        prefix = _G.color.reset
       end
-      return prefix .. e.priority .. " | " .. e.date .. " | " .. e.status .. " | " .. e.title .. "\27[0m"
+      return prefix .. e.__id .. ": " .. e.priority .. " | " .. e.date .. " | " .. e.status .. " | " .. e.title .. _G.color.reset
     end
   },
 
   filter = {
+    id = function(e, id)
+      return e.__id == tonumber(id)
+    end,
+
     status = function(e, status)
       return e.status == status
     end,
