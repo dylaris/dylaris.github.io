@@ -3,7 +3,7 @@
  * ============================================ */
 
 /* Base */
-@import "base/palette.css";
+@import "base/theme.css";
 @import "base/global.css";
 @import "base/layout.css";
 
@@ -12,3 +12,4 @@
 @import "pages/about.css";
 @import "pages/postlist.css";
 @import "pages/post.css";
+@import "pages/todolist.css";

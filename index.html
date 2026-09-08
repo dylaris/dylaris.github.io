@@ -16,6 +16,7 @@
               <li><a href="#" id="nav-home">Home</a></li>
               <li><a href="#" id="nav-about">About</a></li>
               <li><a href="#" id="nav-postlist">PostList</a></li>
+              <li><a href="#" id="nav-todolist">TodoList</a></li>
             </ul>
           </nav>
           <!-- Theme toggle button -->
@@ -42,6 +43,7 @@
     <script type="module">
       import { navigateToPage } from './assets/js/core/router.js';
 
+      // ===== Page navigate =====
       document.getElementById('nav-home').addEventListener('click', (e) => {
         e.preventDefault();
         navigateToPage('home');
@@ -57,7 +59,12 @@
         navigateToPage('postlist');
       });
 
-      // ===== Theme toggle logic =====
+      document.getElementById('nav-todolist').addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('todolist');
+      });
+
+      // ===== Theme toggle =====
       const toggleBtn = document.getElementById('themeToggle');
       const thumb = toggleBtn.querySelector('.toggle-thumb');
 

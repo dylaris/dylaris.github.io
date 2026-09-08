@@ -70,7 +70,6 @@
 
 .meta-item.updated .label {
   background: var(--color-meta-label-updated);
-  color: var(--sumi-ink1);
 }
 
 .meta-item.category .label {

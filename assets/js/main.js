@@ -7,6 +7,7 @@ import { initHome } from './pages/home.js';
 import { initAbout } from './pages/about.js';
 import { initPostlist } from './pages/postlist.js';
 import { initPost } from './pages/post.js';
+import { initTodolist } from './pages/todolist.js';
 
 /**
  * Page initialization map
@@ -15,6 +16,7 @@ const PAGE_INIT_MAP = {
   home: initHome,
   about: initAbout,
   postlist: initPostlist,
+  todolist: initTodolist,
 };
 
 /**

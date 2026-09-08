@@ -1,0 +1,196 @@
+/* ============================================
+ * Todo List Page
+ * ============================================ */
+
+.todo-container {
+  max-width: 720px;
+  margin: 0;
+  padding: 1rem 1.5rem;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ===== Todo Card ===== */
+.todo-item {
+  background: var(--color-todo-bg);
+  border: 1px solid var(--color-todo-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.todo-item:hover {
+  border-color: var(--color-todo-border-hover);
+  box-shadow: 0 4px 16px var(--color-todo-shadow);
+}
+
+/* ===== Card Header ===== */
+.todo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.2rem;
+}
+
+.todo-status {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-todo-status-border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.todo-status:hover {
+  transform: scale(1.15);
+}
+
+.todo-status.done {
+  border-color: var(--color-todo-status-done);
+  background: var(--color-todo-status-done);
+  position: relative;
+}
+
+.todo-status.done::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-todo-label-text);
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.todo-title {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-todo-title);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.todo-title.done {
+  text-decoration: line-through;
+  color: var(--color-todo-title-done);
+}
+
+.todo-toggle {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--color-todo-toggle);
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.todo-item.expanded .todo-toggle {
+  transform: rotate(180deg);
+}
+
+/* ===== Card Body ===== */
+.todo-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.2rem;
+}
+
+.todo-item.expanded .todo-body {
+  max-height: 600px;
+  padding: 0 1.2rem 1.2rem 1.2rem;
+}
+
+/* ===== Detail Items ===== */
+.todo-detail {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  color: var(--color-todo-detail-text);
+  border-top: 1px solid var(--color-border-light, rgba(255, 255, 255, 0.05));
+  align-items: center;
+}
+
+.todo-detail:first-of-type {
+  border-top: 1px solid var(--color-todo-detail-border);
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* ===== Detail Label ===== */
+.todo-detail .label {
+  display: inline-block;
+  padding: 0.1rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--color-todo-label-text);
+  text-align: center;
+  justify-self: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.todo-detail .value {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-todo-detail-value);
+  word-break: break-word;
+}
+
+/* ===== Label Colors ===== */
+.todo-detail.note .label {
+  background: var(--color-todo-label-note);
+}
+
+.todo-detail.time .label {
+  background: var(--color-todo-label-time);
+}
+
+.todo-detail.ref .label {
+  background: var(--color-todo-label-ref);
+}
+
+.todo-detail .label:hover {
+  filter: brightness(1.15);
+  transition: filter 0.2s ease;
+}
+
+/* ===== Reference Tags ===== */
+.ref-tag {
+  display: inline-block;
+  background: var(--color-todo-ref-tag-bg);
+  color: var(--color-todo-ref-tag-text);
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-right: 0.4rem;
+  margin-bottom: 0.2rem;
+  border: 1px solid var(--color-todo-ref-tag-border);
+}
+
+.ref-tag:last-child {
+  margin-right: 0;
+}
+
+/* ===== Empty State ===== */
+.todo-empty {
+  text-align: left;
+  padding: 3rem 1rem;
+  color: var(--color-todo-empty);
+  font-size: 0.95rem;
+  list-style: none;
+}
